@@ -129,6 +129,9 @@
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/configuration/settings">Settings</a>
                                                                     </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/configuration/processes">Processes</a>
+                                                                    </div>
                                                             </div>
                                                         <div class="sidebar-nav-item active has-children">
                                                             <a href="/web/content-and-data">Content And Data</a>
@@ -257,6 +260,7 @@
 <pre><code class="language-yaml">ContentType: Asset
 MediaType: text/plain
 </code></pre>
+<p>Note that to avoid reading every single file and parsing them for front matter, only existing content file types can use front matter to initially change their <code>ContentType</code> or <code>MediaType</code> values. Other file types need to use <a href="/web/content-and-data/metadata/directory-metadata">directory metadata</a> or <a href="/web/content-and-data/metadata/sidecar-files">sidecar</a> files to set their media type to something other than their extension.</p>
 <p>Both <a href="/web/content-and-data/content">content files</a> and <a href="/web/content-and-data/data">data files</a> support functionality like <a href="/web/content-and-data/metadata/directory-metadata">directory metadata</a> files, <a href="/web/content-and-data/metadata/sidecar-files">sidecar</a> files, and <a href="/web/content-and-data/metadata/front-matter">front matter</a>. The main difference is that <a href="/web/content-and-data/templates">templates</a> like <a href="/framework/content/template-languages#markdown">Markdown</a> and <a href="/framework/content/template-languages#razor">Razor</a> are processed for content files whereas data files are parsed as data formats like JSON and YAML and add to the <a href="/framework/documents">metadata of a document</a>.</p>
 <p>Features like <a href="/web/content-and-data/archives">archives</a> and <a href="/web/content-and-data/feeds">feeds</a> also let you work with content and data and produce different kinds of outputs from them.</p>
 

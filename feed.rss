@@ -5,8 +5,249 @@
 		<link>https://statiq.dev/</link>
 		<description />
 		<copyright>2021</copyright>
-		<pubDate>Sun, 31 Jan 2021 21:41:56 GMT</pubDate>
-		<lastBuildDate>Sun, 31 Jan 2021 21:41:56 GMT</lastBuildDate>
+		<pubDate>Mon, 10 May 2021 15:50:57 GMT</pubDate>
+		<lastBuildDate>Mon, 10 May 2021 15:50:57 GMT</lastBuildDate>
+		<item>
+			<title>Statiq.Docs Release 1.0.0-alpha.2</title>
+			<link>https://statiq.dev/news/2021/05/10/statiq.docs-1.0.0-alpha.2</link>
+			<guid>https://statiq.dev/news/2021/05/10/statiq.docs-1.0.0-alpha.2</guid>
+			<pubDate>Mon, 10 May 2021 15:46:52 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Ensures the Api pipeline is a dependency of the Statiq Web Inputs pipeline.&lt;/li&gt;
+&lt;li&gt;Added a null check to the &lt;code&gt;AssemblyFiles&lt;/code&gt;, &lt;code&gt;ProjectFiles&lt;/code&gt;, and &lt;code&gt;SolutionFiles&lt;/code&gt; settings (#44, thanks &amp;#64;&amp;#64;bjorkstromm).&lt;/li&gt;
+&lt;li&gt;Added the &lt;code&gt;CacheDocuments&lt;/code&gt; module to cache code analysis symbol documents (#45, thanks &amp;#64;&amp;#64;bjorkstromm).&lt;/li&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.42"&gt;1.0.0-beta.42&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Web Release 1.0.0-beta.28</title>
+			<link>https://statiq.dev/news/2021/05/10/statiq.web-1.0.0-beta.28</link>
+			<guid>https://statiq.dev/news/2021/05/10/statiq.web-1.0.0-beta.28</guid>
+			<pubDate>Mon, 10 May 2021 15:33:19 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;GitHubClientExtensions.ThrottleAsync()&lt;/code&gt; extensions that can automatically deal with GitHub rate limit and abuse detection exceptions (#952).&lt;/li&gt;
+&lt;li&gt;Added automatic throttling to the &lt;code&gt;ReadGitHub&lt;/code&gt; module and a &lt;code&gt;WithThrottle()&lt;/code&gt; fluent configuration method to specify whether to use it.&lt;/li&gt;
+&lt;li&gt;Added ability to set the temp and cache paths via &lt;code&gt;TempPath&lt;/code&gt; and &lt;code&gt;CachePath&lt;/code&gt; settings.&lt;/li&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.42"&gt;1.0.0-beta.42&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Framework Release 1.0.0-beta.42</title>
+			<link>https://statiq.dev/news/2021/05/10/statiq.framework-1.0.0-beta.42</link>
+			<guid>https://statiq.dev/news/2021/05/10/statiq.framework-1.0.0-beta.42</guid>
+			<pubDate>Mon, 10 May 2021 15:24:17 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Deleted &lt;code&gt;IFile.GetCacheHashCodeAsync()&lt;/code&gt; and replaced it with an implementation of &lt;code&gt;ICacheCode&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Renamed &lt;code&gt;IContentProvider.GetCacheHashCodeAsync()&lt;/code&gt; and replaced it with an implementation of &lt;code&gt;ICacheCode&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Renamed &lt;code&gt;IDocument.GetCacheHashCodeAsync()&lt;/code&gt; and replaced it with an implementation of &lt;code&gt;ICacheCode&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a new &amp;quot;cache&amp;quot; folder that contains caching artifacts to improve performance, deleting it won't harm anything but it should be left if possible to improve initial generation performance.
+Also note that the &amp;quot;cache&amp;quot; folder likely shouldn't be committed to a repository, though it's designed to support that scenario when warranted (I.e. relative paths, etc.).&lt;/li&gt;
+&lt;li&gt;Compiled Razor assemblies (including layouts and partials) are now cached to disk which dramatically improved initial generation performance by not recompiling files that haven't changed.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IFile.ReadAllBytesAsync()&lt;/code&gt; and &lt;code&gt;IFile.WriteAllBytesAsync()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IFile.WriteFromAsync()&lt;/code&gt;, &lt;code&gt;IFile.AppendFromAsync()&lt;/code&gt;, and &lt;code&gt;IFile.CopyToAsync()&lt;/code&gt; extension methods to more easily copy a file from/to a stream.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IReadOnlyFileSystem.CachePath&lt;/code&gt; and related extensions, methods, etc. to provide a path where cache files should be stored and set to &amp;quot;cache&amp;quot; by default (which should be excluded in &lt;code&gt;.gitignore&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;The write tracking data is now cached in a file so if the output folder has not changed and the content is the same, files don't need to be written even on the first execution.&lt;/li&gt;
+&lt;li&gt;Added an &lt;code&gt;ICacheCode&lt;/code&gt; interface to provide a standard deterministic &lt;code&gt;.GetCacheCodeAsync()&lt;/code&gt; method and implemented it in &lt;code&gt;IDocument&lt;/code&gt;, &lt;code&gt;IContentProvider&lt;/code&gt;, and &lt;code&gt;IFile&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Changed the console output encoding and the &lt;code&gt;ProcessLauncher&lt;/code&gt; child process console encodings to UTF-8 so emoji and other Unicode characters will render correctly from child processes.&lt;/li&gt;
+&lt;li&gt;Fixed a bug with the &lt;code&gt;--help&lt;/code&gt; CLI option and command description escaping (#186).&lt;/li&gt;
+&lt;li&gt;Added ability to set the temp and cache paths via the CLI.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Web Release 1.0.0-beta.27</title>
+			<link>https://statiq.dev/news/2021/04/27/statiq.web-1.0.0-beta.27</link>
+			<guid>https://statiq.dev/news/2021/04/27/statiq.web-1.0.0-beta.27</guid>
+			<pubDate>Tue, 27 Apr 2021 02:08:00 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Added additional extensions to the bootstrapper for creating processes with a &lt;code&gt;ProcessLauncher&lt;/code&gt; factory.&lt;/li&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.41"&gt;1.0.0-beta.41&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Framework Release 1.0.0-beta.41</title>
+			<link>https://statiq.dev/news/2021/04/27/statiq.framework-1.0.0-beta.41</link>
+			<guid>https://statiq.dev/news/2021/04/27/statiq.framework-1.0.0-beta.41</guid>
+			<pubDate>Tue, 27 Apr 2021 02:03:21 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Added support for the &lt;code&gt;PATH&lt;/code&gt; and &lt;code&gt;PATHEXT&lt;/code&gt; environment variables to the &lt;code&gt;ProcessLauncher&lt;/code&gt; so it can resolve file names more like &lt;code&gt;cmd.exe&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added better error messages when process launching fails.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;CleanMode.Unwritten&lt;/code&gt; that will wait to clean the output folder &lt;em&gt;after&lt;/em&gt; each execution and tries to avoid writing duplicate files to the file system (this is the new default).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IFile.GetCacheHashCodeAsync()&lt;/code&gt; which can be used to get a hash code representing the current state of a file.&lt;/li&gt;
+&lt;li&gt;Refactored &lt;code&gt;FileContent.GetCacheHashCodeAsync()&lt;/code&gt; to use the new &lt;code&gt;IFile.GetCacheHashCodeAsync()&lt;/code&gt; instead of attempting to read the entire file content.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Web Release 1.0.0-beta.26</title>
+			<link>https://statiq.dev/news/2021/04/12/statiq.web-1.0.0-beta.26</link>
+			<guid>https://statiq.dev/news/2021/04/12/statiq.web-1.0.0-beta.26</guid>
+			<pubDate>Mon, 12 Apr 2021 14:00:35 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.39"&gt;1.0.0-beta.40&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Framework Release 1.0.0-beta.40</title>
+			<link>https://statiq.dev/news/2021/04/12/statiq.framework-1.0.0-beta.40</link>
+			<guid>https://statiq.dev/news/2021/04/12/statiq.framework-1.0.0-beta.40</guid>
+			<pubDate>Mon, 12 Apr 2021 13:40:02 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Several optimizations to file IO and the &lt;code&gt;WriteFiles&lt;/code&gt; and &lt;code&gt;CopyFiles&lt;/code&gt; modules.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Web Release 1.0.0-beta.25</title>
+			<link>https://statiq.dev/news/2021/04/08/statiq.web-1.0.0-beta.25</link>
+			<guid>https://statiq.dev/news/2021/04/08/statiq.web-1.0.0-beta.25</guid>
+			<pubDate>Thu, 08 Apr 2021 02:26:10 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.39"&gt;1.0.0-beta.39&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Framework Release 1.0.0-beta.39</title>
+			<link>https://statiq.dev/news/2021/04/08/statiq.framework-1.0.0-beta.39</link>
+			<guid>https://statiq.dev/news/2021/04/08/statiq.framework-1.0.0-beta.39</guid>
+			<pubDate>Thu, 08 Apr 2021 02:07:51 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Fixed a bug with link generation for non http/https links in Markdown (#179, #184, thanks &amp;#64;&amp;#64;JoshClose).&lt;/li&gt;
+&lt;li&gt;Fixed a bug with the &lt;code&gt;ConsoleListener&lt;/code&gt; on MacOS that prevented signaling from the main thread (used for the &lt;code&gt;preview&lt;/code&gt; command in Statiq Web) (#182, #183, thanks &amp;#64;&amp;#64;devlead).&lt;/li&gt;
+&lt;li&gt;Fixed a bug with the CLI &lt;code&gt;--help&lt;/code&gt; output that caused the app to crash (#180, #181, thanks &amp;#64;&amp;#64;matkoch).&lt;/li&gt;
+&lt;li&gt;Added caching for &lt;code&gt;IEnumerable&amp;lt;TDocument&amp;gt;.GetDestinationTree()&lt;/code&gt; and &lt;code&gt;IEnumerable&amp;lt;TDocument&amp;gt;.GetSourceTree()&lt;/code&gt; which results in a significant performance improvement in some cases for large sites.&lt;/li&gt;
+&lt;li&gt;Improved logging messages related to timing.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IFile&lt;/code&gt; extensions to serialize and deserialize JSON.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;IFile&lt;/code&gt; extensions to serialize and deserialize YAML.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;NormalizedPath.ThrowIfRealtive()&lt;/code&gt; and &lt;code&gt;NormalizedPath.ThrowIfAbsolute()&lt;/code&gt; helper methods.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;IDirectory.MoveTo()&lt;/code&gt; method.&lt;/li&gt;
+&lt;li&gt;Fixed a bug that caused an input phase overload of an &lt;code&gt;ExecutionPipeline&lt;/code&gt; not to execute.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Docs Release 1.0.0-alpha.1</title>
+			<link>https://statiq.dev/news/2021/03/04/statiq.docs-1.0.0-alpha.1</link>
+			<guid>https://statiq.dev/news/2021/03/04/statiq.docs-1.0.0-alpha.1</guid>
+			<pubDate>Thu, 04 Mar 2021 16:09:18 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Initial version (thanks for getting it started &amp;#64;&amp;#64;bjorkstromm!).&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Web Release 1.0.0-beta.24</title>
+			<link>https://statiq.dev/news/2021/02/25/statiq.web-1.0.0-beta.24</link>
+			<guid>https://statiq.dev/news/2021/02/25/statiq.web-1.0.0-beta.24</guid>
+			<pubDate>Thu, 25 Feb 2021 19:52:03 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.38"&gt;1.0.0-beta.38&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Framework Release 1.0.0-beta.38</title>
+			<link>https://statiq.dev/news/2021/02/25/statiq.framework-1.0.0-beta.38</link>
+			<guid>https://statiq.dev/news/2021/02/25/statiq.framework-1.0.0-beta.38</guid>
+			<pubDate>Thu, 25 Feb 2021 19:46:32 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Fixed a bug when both a debugger was attached and the log level was set to debug by removing the &lt;code&gt;DebugLogger&lt;/code&gt; (#176).&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;RedirectTo&lt;/code&gt; metadata value to documents output from &lt;code&gt;GenerateRedirects&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Fixed a regression with the &lt;code&gt;DocumentLink()&lt;/code&gt; HTML helper in Razor (#177).&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Web Release 1.0.0-beta.23</title>
+			<link>https://statiq.dev/news/2021/02/24/statiq.web-1.0.0-beta.23</link>
+			<guid>https://statiq.dev/news/2021/02/24/statiq.web-1.0.0-beta.23</guid>
+			<pubDate>Wed, 24 Feb 2021 21:41:46 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.37"&gt;1.0.0-beta.37&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Framework Release 1.0.0-beta.37</title>
+			<link>https://statiq.dev/news/2021/02/24/statiq.framework-1.0.0-beta.37</link>
+			<guid>https://statiq.dev/news/2021/02/24/statiq.framework-1.0.0-beta.37</guid>
+			<pubDate>Wed, 24 Feb 2021 21:13:32 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Updated Buildalyzer to the most recent version and resolves Roslyn version incompatibilities in the &lt;code&gt;AnalyzeCSharp&lt;/code&gt; module (#174, thanks &amp;#64;&amp;#64;mholo65).&lt;/li&gt;
+&lt;li&gt;Added an optional &lt;code&gt;makeAbsolute&lt;/code&gt; parameter to &lt;code&gt;LinkGenerator.GetLink()&lt;/code&gt; that allows keeping links as relative (#170).&lt;/li&gt;
+&lt;li&gt;Fixed fragment support in the Markdown link rewriter (#170, #175, thanks &amp;#64;&amp;#64;JoshClose).&lt;/li&gt;
+&lt;li&gt;Fixed &lt;code&gt;LinkGenerator&lt;/code&gt; behavior when using query and/or fragment components (#170).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;makeAbsolute&lt;/code&gt; parameters to &lt;code&gt;IExecutionState.GetLink()&lt;/code&gt; extension methods and others as appropriate (#170).&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Web Release 1.0.0-beta.22</title>
+			<link>https://statiq.dev/news/2021/02/21/statiq.web-1.0.0-beta.22</link>
+			<guid>https://statiq.dev/news/2021/02/21/statiq.web-1.0.0-beta.22</guid>
+			<pubDate>Sun, 21 Feb 2021 15:16:12 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.36"&gt;1.0.0-beta.36&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Framework Release 1.0.0-beta.36</title>
+			<link>https://statiq.dev/news/2021/02/21/statiq.framework-1.0.0-beta.36</link>
+			<guid>https://statiq.dev/news/2021/02/21/statiq.framework-1.0.0-beta.36</guid>
+			<pubDate>Sun, 21 Feb 2021 15:09:02 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Removes the &lt;code&gt;UrlResolutionTagHelper&lt;/code&gt; from Razor processing so that &lt;code&gt;~/&lt;/code&gt; links don't get processed (#170).&lt;/li&gt;
+&lt;li&gt;Adds support for &lt;code&gt;~/&lt;/code&gt; link resolution to Markdown files, note that this is an interim feature and will be removed again in favor of a new module that handles &lt;code&gt;~/&lt;/code&gt; links for all template engines soon (#170, #171, thanks &amp;#64;&amp;#64;JoshClose).&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Web Release 1.0.0-beta.21</title>
+			<link>https://statiq.dev/news/2021/02/04/statiq.web-1.0.0-beta.21</link>
+			<guid>https://statiq.dev/news/2021/02/04/statiq.web-1.0.0-beta.21</guid>
+			<pubDate>Thu, 04 Feb 2021 15:09:16 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.35"&gt;1.0.0-beta.35&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Added an &lt;code&gt;ArchiveOrder&lt;/code&gt; to archives which can be used to sort the archive by an arbitrary value using computed metadata (as opposed to &lt;code&gt;ArchiveOrderKey&lt;/code&gt; which relies on the value in metadata).&lt;/li&gt;
+&lt;li&gt;Added support for maxwidth and maxheight to the embed (and derived) shortcode (#943).&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+		<item>
+			<title>Statiq.Framework Release 1.0.0-beta.35</title>
+			<link>https://statiq.dev/news/2021/02/04/statiq.framework-1.0.0-beta.35</link>
+			<guid>https://statiq.dev/news/2021/02/04/statiq.framework-1.0.0-beta.35</guid>
+			<pubDate>Thu, 04 Feb 2021 14:41:00 GMT</pubDate>
+			<content:encoded>&lt;ul&gt;
+&lt;li&gt;Added better error logging of Razor rendering failures.&lt;/li&gt;
+&lt;li&gt;Changed the default Razor model type to &lt;code&gt;IDocument&lt;/code&gt; from &lt;code&gt;dynamic&lt;/code&gt; if no explicit model or base type is specified.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
 		<item>
 			<title>Statiq.Web Release 1.0.0-beta.19</title>
 			<link>https://statiq.dev/news/2021/01/31/statiq.web-1.0.0-beta.19</link>

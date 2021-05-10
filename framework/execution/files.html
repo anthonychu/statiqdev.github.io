@@ -156,6 +156,9 @@
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/framework/configuration/configuration-delegates">Configuration Delegates</a>
                                                                     </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/framework/configuration/clean-mode">Clean Mode</a>
+                                                                    </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
                                                             <a href="/framework/pipelines">Pipelines and Modules</a>
@@ -305,7 +308,7 @@
 </ul>
 <p>Note that relative globbing patterns are often evaluated from the perspective of your <code>input</code> folder.</p>
 <h2 id="troubleshooting-globbing-patterns">Troubleshooting Globbing Patterns</h2>
-<p>Statiq provides the <code>glob</code> command to help troubleshoot globbing patterns, which has two subcommands: <code>glob eval</code> and <code>blog test</code>.</p>
+<p>Statiq provides the <code>glob</code> command to help troubleshoot globbing patterns, which has two subcommands: <code>glob eval</code> and <code>glob test</code>.</p>
 <p>The <code>glob eval</code> command evaluates a globbing pattern against actual files on disk and returns all the files that match:</p>
 <pre><code>dotnet run -- glob eval &lt;pattern&gt; &lt;path&gt;
 </code></pre>

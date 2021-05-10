@@ -30,7 +30,7 @@
         
 		
 
-        <title>Statiq - Simple Ordered Archive</title>
+        <title>Statiq - Blue</title>
     </head>
     <body class="d-flex flex-column">
         <div class="flex-grow-1 d-flex flex-column">
@@ -91,7 +91,7 @@
                                                 <span><a href="/web/examples">Examples</a></span>
                                         </div>
                                         <div class="text-white m-0 title">
-                                            Simple Ordered Archive                                            
+                                            Blue                                            
                                         </div>
                                     </div>
                                         <div class="navbar navbar-expand-md navbar-dark p-0">
@@ -129,6 +129,9 @@
                                                             <div class="sidebar-nav-children">
                                                                     <div class="sidebar-nav-item">
                                                                         <a href="/web/configuration/settings">Settings</a>
+                                                                    </div>
+                                                                    <div class="sidebar-nav-item">
+                                                                        <a href="/web/configuration/processes">Processes</a>
                                                                     </div>
                                                             </div>
                                                         <div class="sidebar-nav-item has-children">
@@ -245,43 +248,53 @@
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             
-<h3>Original File <small><code>simple-ordered-archive.cshtml</code></small></h3>
-
+<h3>Original File <small><code>grouped-archive.cshtml</code></small></h3>
 <pre class="language-txt"><code>ArchiveSources: posts/*
-ArchiveOrderKey: Source
-ArchiveOrderDescending: false
+ArchiveKey: Colors
 ---
-&lt;p&gt;This is a simple archive that lists all the documents from the &lt;code&gt;posts&lt;/code&gt; folder on a single page, sorted by file name in ascending order.&lt;/p&gt;
+&lt;p&gt;
+    This groups the archive using the "Colors" metadata property. Note how if &lt;code&gt;GroupKey&lt;/code&gt; is defined for the document
+    we can assume it's the index for a given color, but if it's not then it's the index for all colors.
+&lt;/p&gt;
 
-@foreach (IDocument document in Model.GetChildren())
+@if (Model.ContainsKey(Keys.GroupKey))
 {
-    &lt;h5&gt;@Html.DocumentLink(document)&lt;/h5&gt;
-    @Html.Raw(document.GetString(Statiq.Html.HtmlKeys.Excerpt))
+    // An individual color
+    &lt;h3&gt;@Model.GetString(Keys.GroupKey)&lt;/h3&gt;
+    @foreach (IDocument document in Model.GetChildren())
+    {
+        &lt;h5&gt;@Html.DocumentLink(document)&lt;/h5&gt;
+        &lt;p&gt;&lt;b&gt;Colors:&lt;/b&gt; @string.Join(", ", document.GetList&lt;string&gt;("Colors"))&lt;/p&gt;
+        @Html.Raw(document.GetString(Statiq.Html.HtmlKeys.Excerpt))
+    }
+}
+else
+{
+    // The main color index
+    &lt;h3&gt;All Colors&lt;/h3&gt;
+    @foreach (IDocument document in Model.GetChildren())
+    {
+        &lt;h5&gt;@Html.DocumentLink(document)&lt;/h5&gt;
+    }
 }
 </code></pre>
 
 <hr>
 
-<p>This is a simple archive that lists all the documents from the <code>posts</code> folder on a single page, sorted by file name in ascending order.</p>
+<p>
+    This groups the archive using the "Colors" metadata property. Note how if <code>GroupKey</code> is defined for the document
+    we can assume it's the index for a given color, but if it's not then it's the index for all colors.
+</p>
 
-    <h5><a href="/web/examples/posts/apple">Apple</a></h5>
-<p>An apple is an edible fruit produced by an apple tree (Malus domestica). Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus. The tree originated in Central Asia, where its wild ancestor, Malus sieversii, is still found today. Apples have been grown for thousands of years in Asia and Europe and were brought to North America by European colonists. Apples have religious and mythological significance in many cultures, including Norse, Greek, and European Christian tradition.</p>    <h5><a href="/web/examples/posts/avocado">Avocado</a></h5>
-<p>The avocado (Persea americana), a tree likely originating from south central Mexico,[2][3][4] is classified as a member of the flowering plant family Lauraceae.[2] The fruit of the plant, also called an avocado (or avocado pear or alligator pear), is botanically a large berry containing a single large seed.[5]</p>    <h5><a href="/web/examples/posts/banana">Banana</a></h5>
-<p>A banana is an elongated, edible fruit – botanically a berry[1][2] – produced by several kinds of large herbaceous flowering plants in the genus Musa.[3] In some countries, bananas used for cooking may be called "plantains", distinguishing them from dessert bananas. The fruit is variable in size, color, and firmness, but is usually elongated and curved, with soft flesh rich in starch covered with a rind, which may be green, yellow, red, purple, or brown when ripe. The fruits grow in clusters hanging from the top of the plant. Almost all modern edible seedless (parthenocarp) bananas come from two wild species – Musa acuminata and Musa balbisiana. The scientific names of most cultivated bananas are Musa acuminata, Musa balbisiana, and Musa × paradisiaca for the hybrid Musa acuminata × M. balbisiana, depending on their genomic constitution. The old scientific name for this hybrid, Musa sapientum, is no longer used.</p>    <h5><a href="/web/examples/posts/blueberry">Blueberry</a></h5>
-<p>Blueberries are perennial flowering plants with blue or purple berries. They are classified in the section Cyanococcus within the genus Vaccinium. Vaccinium also includes cranberries, bilberries, huckleberries and Madeira blueberries.[1] Commercial blueberries—both wild (lowbush) and cultivated (highbush)—are all native to North America. The highbush varieties were introduced into Europe during the 1930s.[2]</p>    <h5><a href="/web/examples/posts/cherry">Cherry</a></h5>
-<p>A cherry is the fruit of many plants of the genus Prunus, and is a fleshy drupe (stone fruit).</p>    <h5><a href="/web/examples/posts/mango">Mango</a></h5>
-<p>A mango is a stone fruit produced from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit. Most of these species are found in nature as wild mangoes. The genus belongs to the cashew family Anacardiaceae. Mangoes are native to South Asia,[1][2] from where the "common mango" or "Indian mango", Mangifera indica, has been distributed worldwide to become one of the most widely cultivated fruits in the tropics. Other Mangifera species (e.g. horse mango, Mangifera foetida) are grown on a more localized basis.</p>    <h5><a href="/web/examples/posts/onion">Onion</a></h5>
-<p>The onion (Allium cepa L., from Latin cepa "onion"), also known as the bulb onion or common onion, is a vegetable that is the most widely cultivated species of the genus Allium. Its close relatives include the garlic, scallion, shallot, leek, chive,[2] and Chinese onion.[3]</p>    <h5><a href="/web/examples/posts/orange">Orange</a></h5>
-<p>The orange is the fruit of various citrus species in the family Rutaceae (see list of plants known as orange); it primarily refers to Citrus × sinensis,[1] which is also called sweet orange, to distinguish it from the related Citrus × aurantium, referred to as bitter orange. The sweet orange reproduces asexually (apomixis through nucellar embryony); varieties of sweet orange arise through mutations.[2][3][4][5]</p>    <h5><a href="/web/examples/posts/pear">Pear</a></h5>
-<p>Pears are fruits produced and consumed around the world, growing on a tree and harvested in late Summer into October. The pear tree and shrub are a species of genus Pyrus /ˈpaɪrəs/, in the family Rosaceae, bearing the pomaceous fruit of the same name. Several species of pears are valued for their edible fruit and juices, while others are cultivated as trees.</p>    <h5><a href="/web/examples/posts/pepper">Pepper</a></h5>
-<p>The bell pepper (also known as sweet pepper, pepper or capsicum /ˈkæpsɪkəm/)[1] is the fruit of plants in the Grossum cultivar group of the species Capsicum annuum.[2][3] Cultivars of the plant produce fruits in different colours, including red, yellow, orange, green, white, and purple. Bell peppers are sometimes grouped with less pungent pepper varieties as "sweet peppers". While they are fruits—botanically classified as berries—they are commonly used as a vegetable ingredient or side dish.</p>    <h5><a href="/web/examples/posts/strawberry">Strawberry</a></h5>
-<p>The garden strawberry (or simply strawberry; Fragaria × ananassa)[1] is a widely grown hybrid species of the genus Fragaria, collectively known as the strawberries, which are cultivated worldwide for their fruit. The fruit is widely appreciated for its characteristic aroma, bright red color, juicy texture, and sweetness. It is consumed in large quantities, either fresh or in such prepared foods as jam, juice, pies, ice cream, milkshakes, and chocolates. Artificial strawberry flavorings and aromas are also widely used in products such as candy, soap, lip gloss, perfume, and many others.</p>    <h5><a href="/web/examples/posts/tomato">Tomato</a></h5>
-<p>The tomato is the edible berry of the plant Solanum lycopersicum,[1][2] commonly known as a tomato plant. The species originated in western South America and Central America.[2][3] The Nahuatl (the language used by the Aztecs) word tomatl gave rise to the Spanish word tomate, from which the English word tomato derived.[3][4] Its domestication and use as a cultivated food may have originated with the indigenous peoples of Mexico.[2][5] The Aztecs used tomatoes in their cooking at the time of the Spanish conquest of the Aztec Empire, and after the Spanish encountered the tomato for the first time after their contact with the Aztecs, they brought the plant to Europe. From there, the tomato was introduced to other parts of the European-colonized world during the 16th century.[2]</p>
+    <h3>Blue</h3>
+        <h5><a href="/web/examples/posts/blueberry">Blueberry</a></h5>
+        <p><b>Colors:</b> Blue</p>
+<p>Blueberries are perennial flowering plants with blue or purple berries. They are classified in the section Cyanococcus within the genus Vaccinium. Vaccinium also includes cranberries, bilberries, huckleberries and Madeira blueberries.[1] Commercial blueberries—both wild (lowbush) and cultivated (highbush)—are all native to North America. The highbush varieties were introduced into Europe during the 1930s.[2]</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
-                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/examples/archives/simple-ordered-archive.cshtml"><i class="fad fa-pencil"></i> Edit This Page</a></p>
+                                        <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/examples/archives/grouped-archive.cshtml"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>
                             </div>
                         </div>

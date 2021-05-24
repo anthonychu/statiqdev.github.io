@@ -4,7 +4,90 @@
 	<title />
 	<link rel="self" href="https://statiq.dev/" />
 	<rights>2021</rights>
-	<updated>2021-05-10T15:50:57Z</updated>
+	<updated>2021-05-24T16:07:44Z</updated>
+	<entry>
+		<id>https://statiq.dev/news/2021/05/24/statiq.docs-1.0.0-alpha.5</id>
+		<title>Statiq.Docs Release 1.0.0-alpha.5</title>
+		<link href="https://statiq.dev/news/2021/05/24/statiq.docs-1.0.0-alpha.5" />
+		<updated>2021-05-24T15:59:56Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Web to version &lt;a href="https://github.com/statiqdev/Statiq.Web/releases/tag/v1.0.0-beta.30"&gt;1.0.0-beta.30&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.44"&gt;1.0.0-beta.44&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2021/05/24/statiq.web-1.0.0-beta.30</id>
+		<title>Statiq.Web Release 1.0.0-beta.30</title>
+		<link href="https://statiq.dev/news/2021/05/24/statiq.web-1.0.0-beta.30" />
+		<updated>2021-05-24T15:49:54Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.44"&gt;1.0.0-beta.44&lt;/a&gt;.
+This Statiq Framework update includes some important breaking changes to Razor layouts and partials. If you have trouble
+with layout and partial compilation after this update, please read the Statiq Framework release notes for help.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2021/05/24/statiq.framework-1.0.0-beta.44</id>
+		<title>Statiq.Framework Release 1.0.0-beta.44</title>
+		<link href="https://statiq.dev/news/2021/05/24/statiq.framework-1.0.0-beta.44" />
+		<updated>2021-05-24T15:41:43Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Breaking change:&lt;/strong&gt; Fixed a bug with Razor layouts and partials and explicit model types. Previously all layouts and partials were assuming
+the model type was an &lt;code&gt;IDocument&lt;/code&gt;. This meant that extension methods and other &lt;code&gt;IDocument&lt;/code&gt; oriented functionality worked in a layout or partial
+when using the &lt;code&gt;&amp;#64;&amp;#64;Model&lt;/code&gt; property to access the document, but it also meant they didn't work for alternate models. Layouts and partials are
+supposed to generally handle all model types (since different views can call them), so now the model is &lt;code&gt;dynamic&lt;/code&gt; for layouts and partials
+unless explicitly specified. This has the side-effect of making some &lt;code&gt;&amp;#64;&amp;#64;Model&lt;/code&gt; access like &lt;code&gt;IDocument&lt;/code&gt; extension methods that used to work fail.
+If you see &amp;quot;does not contain a definition&amp;quot; error messages in Razor compilation, try changing &lt;code&gt;&amp;#64;&amp;#64;Model&lt;/code&gt; property access to &lt;code&gt;&amp;#64;&amp;#64;Document&lt;/code&gt; in your layouts
+and partials, or using an explicit &lt;code&gt;&amp;#64;&amp;#64;model&lt;/code&gt; directive at the top of the layout pr partial file to explicitly specify the model type for that layout or partial.&lt;/li&gt;
+&lt;li&gt;Fixed a bug when changing the &lt;code&gt;CleanMode&lt;/code&gt; setting via the bootstrapper.&lt;/li&gt;
+&lt;li&gt;Improved compilation failure exception messages for Razor layouts and partials.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2021/05/17/statiq.docs-1.0.0-alpha.4</id>
+		<title>Statiq.Docs Release 1.0.0-alpha.4</title>
+		<link href="https://statiq.dev/news/2021/05/17/statiq.docs-1.0.0-alpha.4" />
+		<updated>2021-05-17T19:17:50Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Web to version &lt;a href="https://github.com/statiqdev/Statiq.Web/releases/tag/v1.0.0-beta.29"&gt;1.0.0-beta.29&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.43"&gt;1.0.0-beta.43&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2021/05/17/statiq.docs-1.0.0-alpha.3</id>
+		<title>Statiq.Docs Release 1.0.0-alpha.3</title>
+		<link href="https://statiq.dev/news/2021/05/17/statiq.docs-1.0.0-alpha.3" />
+		<updated>2021-05-17T19:14:34Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Web to version &lt;a href="https://github.com/statiqdev/Statiq.Web/releases/tag/v1.0.0-beta.29"&gt;1.0.0-beta.29&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.43"&gt;1.0.0-beta.43&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2021/05/17/statiq.web-1.0.0-beta.29</id>
+		<title>Statiq.Web Release 1.0.0-beta.29</title>
+		<link href="https://statiq.dev/news/2021/05/17/statiq.web-1.0.0-beta.29" />
+		<updated>2021-05-17T18:21:57Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.43"&gt;1.0.0-beta.43&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2021/05/17/statiq.framework-1.0.0-beta.43</id>
+		<title>Statiq.Framework Release 1.0.0-beta.43</title>
+		<link href="https://statiq.dev/news/2021/05/17/statiq.framework-1.0.0-beta.43" />
+		<updated>2021-05-17T18:15:20Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fixed a bug with using statements not being added to Razor layouts and partials (#953).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
 	<entry>
 		<id>https://statiq.dev/news/2021/05/10/statiq.docs-1.0.0-alpha.2</id>
 		<title>Statiq.Docs Release 1.0.0-alpha.2</title>

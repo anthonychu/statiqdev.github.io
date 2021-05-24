@@ -249,6 +249,10 @@
                                         </div>
                                         <div id="content" class="col-md-9 col-lg-8 p-4 pt-md-0 bg-white">
                                             <p>Statiq supports the Razor engine from ASP.NET Core 3.0.</p>
+<h1 id="document-and-context-access">Document And Context Access</h1>
+<p>The Razor engine in Statiq uses a custom Razor base page type of <code>StatiqRazorPage&lt;TModel&gt;</code>. This exposes several additional properties including <code>@Document</code> to access the currently rendering document and <code>@Context</code> to access the current <a href="/framework/execution/execution-context">execution context</a>.</p>
+<h2 id="model">Model</h2>
+<p>The default model for a Razor page in Statiq is typically also set to the current document and can be accessed using <code>@Model</code> as you would in Razor from ASP.NET Core. However, it is <em>strongly</em> recommended that you get in the habit of referencing your document via the strongly-typed <code>@Document</code> property of the Statiq Razor base page to avoid model typing problems (see below).</p>
 <h1 id="imports-file-and-intellisense">Imports File and Intellisense</h1>
 <p>Because Statiq uses a custom Razor base page, the Razor Intellisense engine doesn't actually know about the default namespaces, base page, or model. While these will be set during generation, it might be helpful to also let the Intellisense version of Razor know about them so you get better hints and errors. To do so, create a <code>_ViewImports.cshtml</code> file in your input folder:</p>
 <pre><code class="language-html">@using Statiq.Common
@@ -259,14 +263,20 @@
 
 @inherits StatiqRazorPage&lt;IDocument&gt;
 </code></pre>
+<h2 id="view-imports-model">View Imports Model</h2>
 <p><strong>Important note:</strong> if you do create a <code>_ViewImports.cshtml</code> file, it will also instruct the Statiq Razor engine during generation. Generally this isn't a problem since the file is just reiterating what Statiq is doing behind the scenes. However, if any of your partial views change the model with a <code>@model</code> directive, the <code>@inherits</code> directive in the <code>_ViewImports.cshtml</code> file will take precedence and the model you define in the partial view will not work. In this case you should define your partial model using a full <code>@inherits</code> directive. For example, <code>@model int</code> should become <code>@inherits StatiqRazorPage&lt;int&gt;</code>.</p>
+<h1 id="layouts-and-partials-model">Layouts and Partials Model</h1>
+<p>Razor layouts and partials need to generally handle all model types (since different views with different model types can call them), so by default they use a model type of <code>dynamic</code> unless explicitly specified otherwise. Unlike normal views where <code>dynamic</code> model types are converted to <code>IDocument</code> (since we know there aren't other "callers" of each individual view), a layout or partial will keep
+it's default <code>dynamic</code> model type. This means that treating the <code>@Model</code> property as an <code>IDocument</code> will fail in some cases (specifically when using extension methods like <code>IDocument.GetString()</code>). If you see "does not contain a definition" error messages during Razor compilation, try changing <code>@Model</code> property access to <code>@Document</code> in your layouts and partials, or using an explicit <code>@model</code> directive at the top of the layout partial file to explicitly specify the model type as <code>IDocument</code> for that layout or partial.</p>
 
 
                                         </div>
                                 <div class="col-lg-2 d-none d-lg-block bg-body pl-3 pt-3">
                                             <div class="border-bottom mb-3">
                                                 <p class="small font-weight-bold">On This Page</p>
+                                                    <p class="small"><a href="#document-and-context-access">Document And Context Access</a></p>
                                                     <p class="small"><a href="#imports-file-and-intellisense">Imports File and Intellisense</a></p>
+                                                    <p class="small"><a href="#layouts-and-partials-model">Layouts and Partials Model</a></p>
                                             </div>
                                         <p class="small font-weight-bold"><a href="https://github.com/statiqdev/statiqdev.github.io/edit/develop/input/web/content-and-data/templates/razor.md"><i class="fad fa-pencil"></i> Edit This Page</a></p>
                                 </div>

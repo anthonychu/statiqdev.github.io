@@ -4,7 +4,17 @@
 	<title />
 	<link rel="self" href="https://statiq.dev/" />
 	<rights>2021</rights>
-	<updated>2021-05-24T16:07:44Z</updated>
+	<updated>2021-05-24T20:15:39Z</updated>
+	<entry>
+		<id>https://statiq.dev/news/2021/05/24/statiq.framework-1.0.0-beta.45</id>
+		<title>Statiq.Framework Release 1.0.0-beta.45</title>
+		<link href="https://statiq.dev/news/2021/05/24/statiq.framework-1.0.0-beta.45" />
+		<updated>2021-05-24T20:02:39Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fixed several bugs related to caching in the &lt;code&gt;CopyFiles&lt;/code&gt; module (#189).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
 	<entry>
 		<id>https://statiq.dev/news/2021/05/24/statiq.docs-1.0.0-alpha.5</id>
 		<title>Statiq.Docs Release 1.0.0-alpha.5</title>

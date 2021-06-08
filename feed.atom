@@ -4,7 +4,43 @@
 	<title />
 	<link rel="self" href="https://statiq.dev/" />
 	<rights>2021</rights>
-	<updated>2021-05-24T20:15:39Z</updated>
+	<updated>2021-06-08T19:27:37Z</updated>
+	<entry>
+		<id>https://statiq.dev/news/2021/06/08/statiq.docs-1.0.0-alpha.6</id>
+		<title>Statiq.Docs Release 1.0.0-alpha.6</title>
+		<link href="https://statiq.dev/news/2021/06/08/statiq.docs-1.0.0-alpha.6" />
+		<updated>2021-06-08T19:20:41Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Web to version &lt;a href="https://github.com/statiqdev/Statiq.Web/releases/tag/v1.0.0-beta.31"&gt;1.0.0-beta.31&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.46"&gt;1.0.0-beta.46&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2021/06/08/statiq.web-1.0.0-beta.31</id>
+		<title>Statiq.Web Release 1.0.0-beta.31</title>
+		<link href="https://statiq.dev/news/2021/06/08/statiq.web-1.0.0-beta.31" />
+		<updated>2021-06-08T19:15:12Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Updated Statiq Framework to version &lt;a href="https://github.com/statiqdev/Statiq.Framework/releases/tag/v1.0.0-beta.46"&gt;1.0.0-beta.46&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Added support for async zip deployment to the &lt;code&gt;DeployAppService&lt;/code&gt; module and made it the default method
+(see &lt;a href="https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url#asynchronous-zip-deployment"&gt;https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url#asynchronous-zip-deployment&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	<entry>
+		<id>https://statiq.dev/news/2021/06/08/statiq.framework-1.0.0-beta.46</id>
+		<title>Statiq.Framework Release 1.0.0-beta.46</title>
+		<link href="https://statiq.dev/news/2021/06/08/statiq.framework-1.0.0-beta.46" />
+		<updated>2021-06-08T19:03:28Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Fixed a bug in &lt;code&gt;MirrorResources&lt;/code&gt; to prevent it from mirroring links with &amp;quot;rel&amp;quot; values that don't specify artifacts (#190).&lt;/li&gt;
+&lt;li&gt;Fixed a bug in &lt;code&gt;MirrorResources&lt;/code&gt; to prevent it from mirroring resources from the current host when &lt;code&gt;Host&lt;/code&gt; is specified (#190).&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;ReadExcel&lt;/code&gt; module to Statiq.Tables that can read an Excel file into metadata as a &lt;code&gt;IReadOnlyList&amp;lt;IReadOnlyList&amp;lt;string&amp;gt;&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;ReadCsv&lt;/code&gt; module to Statiq.Tables that can read a CSV file into metadata as a &lt;code&gt;IReadOnlyList&amp;lt;IReadOnlyList&amp;lt;string&amp;gt;&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
 	<entry>
 		<id>https://statiq.dev/news/2021/05/24/statiq.framework-1.0.0-beta.45</id>
 		<title>Statiq.Framework Release 1.0.0-beta.45</title>
